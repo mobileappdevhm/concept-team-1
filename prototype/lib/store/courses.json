@@ -1,0 +1,43 @@
+[{
+  "course_name": "Compiler Construction",
+  "professor_name": "Beckie",
+  "classroom_name": "Kingswood",
+  "building_name": "Sherland",
+  "schedule_time": "8:59 PM",
+  "schedule_days": "5:26 AM"
+}, {
+  "course_name": "Operating Systems",
+  "professor_name": "Russell",
+  "classroom_name": "Polycote",
+  "building_name": "Goslin",
+  "schedule_time": "10:57 AM",
+  "schedule_days": "9:39 PM"
+}, {
+  "course_name": "Secure Network Construction",
+  "professor_name": "Peter",
+  "classroom_name": "Offer",
+  "building_name": "Ferneley",
+  "schedule_time": "8:34 PM",
+  "schedule_days": "3:28 PM"
+}, {
+  "course_name": "Prodder",
+  "professor_name": "Langston",
+  "classroom_name": "Monery",
+  "building_name": "Fireman",
+  "schedule_time": "3:01 PM",
+  "schedule_days": "3:57 PM"
+}, {
+  "course_name": "Konklab",
+  "professor_name": "Mireielle",
+  "classroom_name": "Brightwell",
+  "building_name": "Dresse",
+  "schedule_time": "7:08 AM",
+  "schedule_days": "10:23 AM"
+}, {
+  "course_name": "Daltfresh",
+  "professor_name": "Matilde",
+  "classroom_name": "Rubenchik",
+  "building_name": "Perello",
+  "schedule_time": "11:11 PM",
+  "schedule_days": "5:06 AM"
+}]
