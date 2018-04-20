@@ -66,7 +66,7 @@ class RegistrationState extends State<Registration> {
                   onPressed: () => _addClassHandler(jsonMap["course_name"]),
                   child: new Container(
                     margin: const EdgeInsets.fromLTRB(50.0, 15.0, 50.0, 15.0),
-                    child:new Text("Add To Cart"),
+                    child:new Text("Add Course"),
                   ),
                   //child: new Icon(Icons.add_shopping_cart)
                 ),
