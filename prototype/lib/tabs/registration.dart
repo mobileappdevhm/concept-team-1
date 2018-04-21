@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:cie/consants/Style.dart';
+import 'package:cie/consants/style.dart';
 import 'package:cie/store/MyFileStore.dart';
 import 'package:cie/store/course.dart';
 import 'package:flutter/material.dart';
