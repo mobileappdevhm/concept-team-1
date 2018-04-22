@@ -212,5 +212,5 @@ const List<TabItem> TabItems = const <TabItem>[
   const TabItem(title: 'My Schedule', icon: Icons.calendar_today),
   const TabItem(title: 'Register Courses', icon: Icons.dashboard),
   const TabItem(title: 'Browse Courses', icon: Icons.transform),
-  const TabItem(title: 'Search Courses', icon: Icons.class_)
+  const TabItem(title: 'Departments', icon: Icons.class_)
 ];

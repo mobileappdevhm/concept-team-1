@@ -1,6 +1,21 @@
 class Course {
   static String configJson = '''
-  [{
+  [{"course_name": "Advanced Architectural Design Studios I (AD) (MA)",
+    "professor_name": "Meck",
+    "classroom_name": "0.000",
+    "building_name": "A",
+    "schedule_time": "8:15-11:30",
+    "schedule_days": "Thursday",
+    "course_description": "The course covers the tasks of an operating system, basic concepts about how those can be accomplished, and examples of the implementation in important, current operating systems."
+  }, {
+    "course_name": "Advanced Architectural Design Studios II (UD) (MA)",
+    "professor_name": "Benze",
+    "classroom_name": "0.000",
+    "building_name": "A",
+    "schedule_time": "11:30:13-15",
+    "schedule_days": "Monday",
+    "course_description": "The course covers the tasks of an operating system, basic concepts about how those can be accomplished, and examples of the implementation in important, current operating systems."
+   }, {
     "course_name": "Operating Systems 1",
     "professor_name": "Vogt",
     "classroom_name": "1.008",

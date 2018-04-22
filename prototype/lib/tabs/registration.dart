@@ -58,23 +58,24 @@ class RegistrationState extends State<Registration> {
           ),
           new Container(
             margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-          child: new Row(
+            child: new Row(
               //mainAxisAlignment: MainAxisAlignment.start,
-              children: <Widget>[
-                new RaisedButton(
-                  color: Colors.orangeAccent,
-                  onPressed: () => _addClassHandler(jsonMap["course_name"]),
-                  child: new Container(
-                    margin: const EdgeInsets.fromLTRB(50.0, 15.0, 50.0, 15.0),
-                    child:new Text("Add Course"),
+                children: <Widget>[
+                  new RaisedButton(
+                    color: Colors.orangeAccent,
+                    onPressed: () => _addClassHandler(jsonMap["course_name"]),
+                    child: new Container(
+                      margin: const EdgeInsets.fromLTRB(50.0, 15.0, 50.0, 15.0),
+                      child:new Text("Add Course"),
+                    ),
+                    //child: new Icon(Icons.add_shopping_cart)
                   ),
-                  //child: new Icon(Icons.add_shopping_cart)
-                ),
-              ]),
+                ]),
           ),
         ],
       ));
     }
+
     return list;
   }
 
