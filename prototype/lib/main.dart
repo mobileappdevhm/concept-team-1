@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import './tabs/home.dart' as _firstTab;
 import './tabs/dashboard.dart' as _secondTab;
 import './tabs/registration.dart' as _thirdTab;
+import './tabs/departments.dart' as _fourthTab;
 import './screens/about.dart' as _aboutPage;
 import './screens/support.dart' as _supportPage;
 
@@ -88,6 +89,7 @@ class TabsState extends State<Tabs> {
         new _firstTab.Home(),
         new _secondTab.Dashboard(),
         new _thirdTab.Registration(_tabController),
+        new _fourthTab.Departments(),
       ],
     ),
 
@@ -109,8 +111,17 @@ class TabsState extends State<Tabs> {
         onTap: onTap,
         items: TabItems.map((TabItem) {
           return new BottomNavigationBarItem(
-            title: new Text(TabItem.title),
-            icon: new Icon(TabItem.icon),
+            title: new Text(
+                TabItem.title,
+                style: new TextStyle(
+                  color: Colors.black
+                ),
+            ),
+            icon: new Icon(
+                TabItem.icon,
+                color: Colors.black
+            ),
+            backgroundColor: Colors.white70
           );
         }).toList(),
     ),
@@ -184,11 +195,9 @@ class TabsState extends State<Tabs> {
       case 2:
         this._title_app = TabItems[2].title;
       break;
-      /*
       case 3:
         this._title_app = TabItems[3].title;
-        break;
-      */
+      break;
     }
   }
 }
@@ -203,5 +212,5 @@ const List<TabItem> TabItems = const <TabItem>[
   const TabItem(title: 'My Schedule', icon: Icons.calendar_today),
   const TabItem(title: 'Register Courses', icon: Icons.dashboard),
   const TabItem(title: 'Browse Courses', icon: Icons.transform),
-  //const TabItem(title: 'Settings', icon: Icons.settings)
+  const TabItem(title: 'Search Courses', icon: Icons.class_)
 ];
