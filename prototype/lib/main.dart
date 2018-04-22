@@ -88,6 +88,7 @@ class TabsState extends State<Tabs> {
       children: <Widget>[
         new _firstTab.Home(),
         new _secondTab.Dashboard(),
+        //TODO: turn browse courses tab into sidebar according to https://github.com/mobileappdevhm/concept-team-1/projects/1#card-9136429
         new _thirdTab.Registration(_tabController),
         new _fourthTab.Departments(),
       ],
@@ -192,6 +193,7 @@ class TabsState extends State<Tabs> {
       case 1:
         this._title_app = TabItems[1].title;
       break;
+      //TODO: turn browse courses tab into sidebar according to https://github.com/mobileappdevhm/concept-team-1/projects/1#card-9136429
       case 2:
         this._title_app = TabItems[2].title;
       break;
@@ -211,6 +213,7 @@ class TabItem {
 const List<TabItem> TabItems = const <TabItem>[
   const TabItem(title: 'My Schedule', icon: Icons.calendar_today),
   const TabItem(title: 'Register Courses', icon: Icons.dashboard),
+  //TODO: turn browse courses tab into sidebar according to https://github.com/mobileappdevhm/concept-team-1/projects/1#card-9136429
   const TabItem(title: 'Browse Courses', icon: Icons.transform),
   const TabItem(title: 'Departments', icon: Icons.class_)
 ];

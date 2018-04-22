@@ -80,7 +80,21 @@ class RegistrationState extends State<Registration> {
   }
 
   @override
-  Widget build(BuildContext context) => new Container(
-        child: new ListView(children: renderCourses()),
+  Widget build(BuildContext context) => new Column(
+      children: <Widget>[
+        new Container(
+          padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+          child: new TextField(
+            decoration: new InputDecoration(
+              hintText: "Search for Courses"
+            ),
+          ),
+        ),
+        new Expanded(
+          child: new Container(
+            child: new ListView(children: renderCourses()),
+        ),
+      ),
+    ],
   );
 }
