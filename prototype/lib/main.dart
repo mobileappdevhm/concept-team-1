@@ -6,6 +6,7 @@ import './tabs/registration.dart' as _thirdTab;
 import './tabs/departments.dart' as _fourthTab;
 import './screens/about.dart' as _aboutPage;
 import './screens/support.dart' as _supportPage;
+import './screens/courses.dart' as _coursesPage;
 
 void main() => runApp(new MaterialApp(
   title: 'Technical CIE',
@@ -23,6 +24,10 @@ void main() => runApp(new MaterialApp(
       );
       case '/support': return new FromRightToLeft(
         builder: (_) => new _supportPage.Support(),
+        settings: settings,
+      );
+      case '/courses': return new FromRightToLeft(
+        builder: (_) => new _coursesPage.Courses(),
         settings: settings,
       );
     }
@@ -157,12 +162,20 @@ class TabsState extends State<Tabs> {
             }
           ),
           new ListTile(
-            leading: new Icon(Icons.info),
-            title: new Text('About'),
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.of(context).pushNamed('/about');
-            }
+              leading: new Icon(Icons.info),
+              title: new Text('About'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/about');
+              }
+          ),
+          new ListTile(
+              leading: new Icon(Icons.transform),
+              title: new Text('Browse Courses'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/courses');
+              }
           ),
           new Divider(),
           new ListTile(

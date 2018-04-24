@@ -5,7 +5,6 @@ import 'package:cie/consants/style.dart';
 import 'package:cie/store/MyFileStore.dart';
 import 'package:cie/store/course.dart';
 import 'package:cie/store/department.dart';
-import 'package:cie/tabs/registration.dart';
 import 'package:flutter/material.dart';
 
 class Departments extends StatefulWidget {
