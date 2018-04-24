@@ -174,17 +174,24 @@ class CourseState extends State<Courses> {
     for (int i = 0; i < jsonCourses.length; i++) {
       String jsonCourse = JSON.encode(jsonCourses[i]);
       Map jsonMap = JSON.decode(jsonCourse);
-      list.add(new ExpansionTile(
-        backgroundColor: new Color(0x07000000),
-        title: new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
-        children: <Widget>[
-          new Container(
-            margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            child: new Text(jsonMap["course_description"],
-                style: MyStyle.getStyle()),
+      list.add(new Container(
+        decoration: new BoxDecoration(
+          border: new Border(
+              top: new BorderSide(color: Colors.black45, width: 1.0)),
+        ),
+          child:new ExpansionTile(
+            backgroundColor: new Color(0x07000000),
+            title: new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
+            children: <Widget>[
+              new Container(
+                margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                child: new Text(jsonMap["course_description"],
+                    style: MyStyle.getStyle()),
+              ),
+            ],
           ),
-        ],
-      ));
+        )
+      );
     }
     list.add(
         new Container(
