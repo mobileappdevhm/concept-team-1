@@ -32,6 +32,9 @@ class HomeState extends State<Home>{
 
   List<Widget> renderRows() {
     List<Widget> list = new List<Widget>();
+    list.add(new Padding(
+      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
+    ));
     List jsonCourses = JSON.decode(Course.configJson);
     for (int i = 0; i < jsonCourses.length; i++) {
       String jsonCourse = JSON.encode(jsonCourses[i]);
@@ -43,15 +46,14 @@ class HomeState extends State<Home>{
 
   Container renderCourse(String name, String time, String day, building, classroom, professor) {
     return new Container(
-      height: 125.0,
-      margin : const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-      padding: const EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+      margin : const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
+      padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
       decoration: new BoxDecoration(
           border: new Border(
-              top: new BorderSide(color: Colors.lightBlue, width: 4.0),
-              right: new BorderSide(color: Colors.grey, width: 1.0),
-              bottom: new BorderSide(color: Colors.grey,  width: 1.0),
-              left: new BorderSide(color: Colors.grey, width: 1.0)),
+              top: new BorderSide(color: Colors.lightBlue, width: 2.0),
+              right: new BorderSide(color: Colors.black12, width: 1.25),
+              bottom: new BorderSide(color: Colors.black12,  width: 1.25),
+              left: new BorderSide(color: Colors.black12, width: 1.25)),
       ),
       child: new Row(
         mainAxisAlignment: MainAxisAlignment.start,

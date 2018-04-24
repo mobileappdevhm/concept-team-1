@@ -47,6 +47,7 @@ class CoursesState extends State<Courses> {
               children: <Widget>[
                 new Container(
                   padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                  margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
                   child: new TextField(
                     decoration:
                         new InputDecoration(hintText: "Search for Courses"),
@@ -105,7 +106,6 @@ class CoursesState extends State<Courses> {
         ],
       ));
     }
-
     return list;
   }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import './tabs/home.dart' as _firstTab;
 import './tabs/dashboard.dart' as _secondTab;
-import './tabs/registration.dart' as _thirdTab;
-import './tabs/departments.dart' as _fourthTab;
+//import './tabs/registration.dart' as _thirdTab;
+import './tabs/departments.dart' as _thirdTab;
 import './screens/about.dart' as _aboutPage;
 import './screens/support.dart' as _supportPage;
 import './screens/courses.dart' as _coursesPage;
@@ -93,9 +93,7 @@ class TabsState extends State<Tabs> {
       children: <Widget>[
         new _firstTab.Home(),
         new _secondTab.Dashboard(),
-        //TODO: turn browse courses tab into sidebar according to https://github.com/mobileappdevhm/concept-team-1/projects/1#card-9136429
-        new _thirdTab.Registration(_tabController),
-        new _fourthTab.Departments(),
+        new _thirdTab.Departments(),
       ],
     ),
 
@@ -162,19 +160,19 @@ class TabsState extends State<Tabs> {
             }
           ),
           new ListTile(
+              leading: new Icon(Icons.search),
+              title: new Text('Search All Courses'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.of(context).pushNamed('/courses');
+              }
+          ),
+          new ListTile(
               leading: new Icon(Icons.info),
               title: new Text('About'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.of(context).pushNamed('/about');
-              }
-          ),
-          new ListTile(
-              leading: new Icon(Icons.transform),
-              title: new Text('Browse Courses'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.of(context).pushNamed('/courses');
               }
           ),
           new Divider(),
@@ -206,12 +204,9 @@ class TabsState extends State<Tabs> {
       case 1:
         this._title_app = TabItems[1].title;
       break;
-      //TODO: turn browse courses tab into sidebar according to https://github.com/mobileappdevhm/concept-team-1/projects/1#card-9136429
       case 2:
         this._title_app = TabItems[2].title;
       break;
-      case 3:
-        this._title_app = TabItems[3].title;
       break;
     }
   }
@@ -226,7 +221,5 @@ class TabItem {
 const List<TabItem> TabItems = const <TabItem>[
   const TabItem(title: 'My Schedule', icon: Icons.calendar_today),
   const TabItem(title: 'Register Courses', icon: Icons.dashboard),
-  //TODO: turn browse courses tab into sidebar according to https://github.com/mobileappdevhm/concept-team-1/projects/1#card-9136429
-  const TabItem(title: 'Browse Courses', icon: Icons.transform),
-  const TabItem(title: 'Departments', icon: Icons.class_)
+  const TabItem(title: 'Browse Courses', icon: Icons.class_)
 ];

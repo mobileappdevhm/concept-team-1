@@ -7,21 +7,12 @@ import 'package:cie/store/course.dart';
 import 'package:flutter/material.dart';
 
 class Registration extends StatefulWidget {
-  final PageController controller;
-
-  Registration(PageController controller) {
-    controller = this.controller;
-  }
   @override
-  RegistrationState createState() => new RegistrationState(controller);
+  RegistrationState createState() => new RegistrationState();
 }
 
 class RegistrationState extends State<Registration> {
   String _classes;
-  final PageController controller;
-  RegistrationState(PageController controller) {
-    controller = this.controller;
-  }
 
   @override
   void initState() {
