@@ -35,6 +35,9 @@ class DepartmentsState extends State<Departments> {
 
   List<Widget> renderRows() {
     List<Widget> list = new List<Widget>();
+    list.add(new Padding(
+      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
+    ));
     List jsonDepartments = JSON.decode(Department.configJson);
     for (int i = 0; i < jsonDepartments.length; i++) {
       String jsonCourse = JSON.encode(jsonDepartments[i]);
@@ -47,19 +50,17 @@ class DepartmentsState extends State<Departments> {
 
   Container renderDepartment(String name, String number) {
     return new Container(
-      margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-      //padding: const EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 10.0),
+      padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+      margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
       decoration: new BoxDecoration(
         border: new Border(
-            top: new BorderSide(color: Colors.green, width: 1.5),
-            right: new BorderSide(color: Colors.black12, width: 1.0),
-            bottom: new BorderSide(color: Colors.black12, width: 1.0),
-            left: new BorderSide(color: Colors.black12, width: 1.0)),
+            top: new BorderSide(color: Colors.green, width: 2.0),
+            right: new BorderSide(color: Colors.black12, width: 1.25),
+            bottom: new BorderSide(color: Colors.black12, width: 1.25),
+            left: new BorderSide(color: Colors.black12, width: 1.25)),
       ),
       child: new FlatButton(
         color: Colors.white,
-        //highlightColor: Colors.white,
-        //splashColor: Colors.white,
         padding: new EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
         onPressed: () {
           Navigator.push(
@@ -79,7 +80,7 @@ class DepartmentsState extends State<Departments> {
                     style: MyStyle.getBoldStyle(),
                   ),
                   new Padding(padding: new EdgeInsets.only(bottom: 5.0)),
-                  new Text("Department " + number, style: MyStyle.getStyle()),
+                  new Text("Department " + number, style: MyStyle.getItalicStyle()),
                 ],
               ),
             ),
@@ -104,11 +105,19 @@ class Courses extends StatefulWidget {
 class CourseState extends State<Courses> {
   String name, number;
   String _classes;
+  bool _isChecked = false;
 
   CourseState(String name, String number) {
     this.name = name;
     this.number = number;
   }
+
+  void onChanged(bool value) {
+    setState((){
+      _isChecked = value;
+    });
+  }
+
 
   @override
   void initState() {
@@ -133,21 +142,23 @@ class CourseState extends State<Courses> {
   Widget build(BuildContext context) {
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Department: " + number),
+        title: new Text("Browsing Department " + number),
       ),
       body: new Column(
         children: <Widget>[
-          new Expanded(
-            child: new Container (
-              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-              child: new Align(
-                alignment: Alignment.topCenter,
-                child: new Text("Courses for: \n" + name, style:MyStyle.getBoldStyle(),textAlign: TextAlign.center,),
-              ),
+          new Container(
+            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Expanded(
+                  child: new Text(name, style:MyStyle.getHeaderStyle(),textAlign: TextAlign.center)
+                ),
+              ],
             ),
           ),
           new Expanded(
-            flex: 5,
+            flex: 6,
             child: new Container(
               child: new ListView(children: renderCourses()),
             )
@@ -164,6 +175,7 @@ class CourseState extends State<Courses> {
       String jsonCourse = JSON.encode(jsonCourses[i]);
       Map jsonMap = JSON.decode(jsonCourse);
       list.add(new ExpansionTile(
+        backgroundColor: new Color(0x07000000),
         title: new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
         children: <Widget>[
           new Container(
@@ -171,25 +183,25 @@ class CourseState extends State<Courses> {
             child: new Text(jsonMap["course_description"],
                 style: MyStyle.getStyle()),
           ),
-          new Container(
-            margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-            child: new Row(
-              //mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  new RaisedButton(
-                    color: Colors.orangeAccent,
-                    onPressed: () => _addClassHandler(jsonMap["course_name"]),
-                    child: new Container(
-                      margin: const EdgeInsets.fromLTRB(50.0, 15.0, 50.0, 15.0),
-                      child:new Text("Add Course"),
-                    ),
-                    //child: new Icon(Icons.add_shopping_cart)
-                  ),
-                ]),
-          ),
         ],
       ));
     }
+    list.add(
+        new Container(
+          height: 50.0,
+          margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 25.0),
+          padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+          child: new RaisedButton(
+            color: Colors.orangeAccent,
+              onPressed: voidFunction,
+              child:new Text("Add Selected Courses"),
+          )
+        )
+    );
     return list;
+  }
+
+  void voidFunction() {
+
   }
 }

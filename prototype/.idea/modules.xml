@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/flutterstarter.iml" filepath="$PROJECT_DIR$/.idea/flutterstarter.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/prototype.iml" filepath="$PROJECT_DIR$/.idea/prototype.iml" />
     </modules>
   </component>
