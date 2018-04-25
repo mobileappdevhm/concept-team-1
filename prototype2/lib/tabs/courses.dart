@@ -35,7 +35,7 @@ class CoursesState extends State<Courses> {
   Widget build(BuildContext context) => new Column(
         children: <Widget>[
           new Container(
-            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
             child: new TextField(
               decoration: new InputDecoration(hintText: "Search for Courses"),
             ),
