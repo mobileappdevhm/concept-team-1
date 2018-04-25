@@ -100,6 +100,9 @@ class TabsState extends State<Tabs> {
       case 2:
         this._appTitle = TabItems[2].title;
         break;
+      case 3:
+        this._appTitle = TabItems[3].title;
+        break;
     }
   }
 }
@@ -112,7 +115,7 @@ class TabItem {
 }
 
 const List<TabItem> TabItems = const <TabItem>[
-  const TabItem(title: 'Courses', icon: Icons.apps),
-  const TabItem(title: 'Departments', icon: Icons.business),
+  const TabItem(title: 'Search', icon: Icons.search),
+  const TabItem(title: 'Browse Courses', icon: Icons.business),
   const TabItem(title: 'Bookmarks', icon: Icons.book),
 ];

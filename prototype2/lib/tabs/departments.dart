@@ -7,6 +7,8 @@ import 'package:cie/store/course.dart';
 import 'package:cie/store/department.dart';
 import 'package:flutter/material.dart';
 
+import 'package:cie/utilities/constants.dart';
+
 class Departments extends StatefulWidget {
   @override
   DepartmentsState createState() => new DepartmentsState();
@@ -35,9 +37,19 @@ class DepartmentsState extends State<Departments> {
 
   List<Widget> renderRows() {
     List<Widget> list = new List<Widget>();
-    list.add(new Padding(
-      padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
-    ));
+
+    list.add(
+      new Container(
+        margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+        child: new RaisedButton(
+            color: Colors.lightBlueAccent,
+            padding: const EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 10.0),
+            onPressed: switchToSearchPage,
+            child: new Column(
+              children: <Widget>[new Icon(Icons.search), new Text("Search Entire Course Catalog")]
+            )))
+    );
+
     List jsonDepartments = JSON.decode(Department.configJson);
     for (int i = 0; i < jsonDepartments.length; i++) {
       String jsonCourse = JSON.encode(jsonDepartments[i]);
@@ -45,13 +57,19 @@ class DepartmentsState extends State<Departments> {
       list.add(renderDepartment(
           jsonMap["department_name"], jsonMap["department_number"]));
     }
+
     return list;
   }
 
+  void switchToSearchPage() {
+    String path = Routes.Courses;
+    Navigator.of(context).pushReplacementNamed(path);
+  }
+
+
   Container renderDepartment(String name, String number) {
     return new Container(
-      margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
-      padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+      margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
       decoration: new BoxDecoration(
         border: new Border(
             top: new BorderSide(color: Colors.green, width: 2.0),
@@ -60,8 +78,9 @@ class DepartmentsState extends State<Departments> {
             left: new BorderSide(color: Colors.black12, width: 1.25)),
       ),
       child: new FlatButton(
-        color: Colors.white,
-        padding: new EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+        color: new Color(0x07000000),
+        //color: Colors.white,
+        padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
         onPressed: () {
           Navigator.push(
             context,
@@ -146,7 +165,7 @@ class CourseState extends State<Courses> {
       body: new Column(
         children: <Widget>[
             new Container (
-              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
+              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
               child: new Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -176,7 +195,7 @@ class CourseState extends State<Courses> {
       list.add(new Container(
         decoration: new BoxDecoration(
           border: new Border(
-              top: new BorderSide(color: Colors.black45, width: 1.0)),
+              top: new BorderSide(color: Colors.black38, width: 1.0)),
         ),
         child:new ExpansionTile(
           backgroundColor: new Color(0x07000000),
@@ -210,4 +229,6 @@ class CourseState extends State<Courses> {
   void voidFunction() {
 
   }
+
 }
+

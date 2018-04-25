@@ -5,6 +5,7 @@ import 'package:cie/store/course.dart';
 import 'package:cie/utilities/style.dart';
 import 'package:cie/utilities/utilities.dart';
 import 'package:flutter/material.dart';
+import 'package:cie/utilities/constants.dart';
 
 class Schedule extends StatefulWidget {
   @override
@@ -20,7 +21,7 @@ class ScheduleState extends State<Schedule> {
     super.initState();
     MyFileStore.readLocalFile().then((String value) {
       setState(() {
-        _classes = value.isNotEmpty ? value : "";
+        _classes = value!=null ? value : "";
       });
     });
     MyFileStore.readLoginFile().then((bool value) {
@@ -57,8 +58,22 @@ class ScheduleState extends State<Schedule> {
         drawer: Utilities.getNavigationDrawer(context),
       );
 
+  void switchToLogin() {
+    String path = Routes.Login;
+    Navigator.of(context).pushReplacementNamed(path);
+  }
+
   List<Widget> renderRows() {
     List<Widget> list = new List<Widget>();
+    if (_classes == null) {
+      list.add(
+      new RaisedButton(
+              onPressed: switchToLogin,
+              child: new Text("Sign in"),
+              color: Colors.lightBlueAccent
+          )
+      );
+    }
     list.add(new Padding(
       padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 10.0),
     ));
@@ -76,7 +91,7 @@ class ScheduleState extends State<Schedule> {
             "Professor " + jsonMap["professor_name"]));
       }
     } else {
-      list.add(new Text('Please login to see your schedule.'));
+      new Text('Please login to view your schedule.', style: MyStyle.getStyle());
     }
     return list;
   }
@@ -85,7 +100,7 @@ class ScheduleState extends State<Schedule> {
       String name, String time, String day, building, classroom, professor) {
     return new Container(
       height: 125.0,
-      margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+      margin: const EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 10.0),
       padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
       decoration: new BoxDecoration(
         border: new Border(

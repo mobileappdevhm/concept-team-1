@@ -1,5 +1,7 @@
 import 'package:cie/store/MyFileStore.dart';
 import 'package:flutter/material.dart';
+import 'package:cie/utilities/style.dart';
+import 'package:cie/utilities/constants.dart';
 
 class Bookmarks extends StatefulWidget {
   @override
@@ -7,15 +9,15 @@ class Bookmarks extends StatefulWidget {
 }
 
 class BookmarksState extends State<Bookmarks> {
-  String _classes;
-  bool _loggedIn = false;
+  String _classes = "dog";
+  bool _loggedIn = true;
 
   @override
   void initState() {
     super.initState();
     MyFileStore.readLocalFile().then((String value) {
       setState(() {
-        _classes = value.isNotEmpty ? value : "";
+        _classes = value!= null ? value : "We are logged in";
       });
     });
     MyFileStore.readLoginFile().then((bool value) {
@@ -43,9 +45,19 @@ class BookmarksState extends State<Bookmarks> {
       return new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Text('Please login to show your saved classes.'),
+          new RaisedButton(
+              onPressed: switchToLogin,
+              child: new Text("Sign in"),
+              color: Colors.lightBlueAccent
+          ),
         ],
       );
     }
+    return new Row();
+  }
+
+  void switchToLogin() {
+    String path = Routes.Login;
+    Navigator.of(context).pushReplacementNamed(path);
   }
 }

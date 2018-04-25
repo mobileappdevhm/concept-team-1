@@ -28,7 +28,7 @@ class Utilities {
         ),
         _createProfile(context),
         new Divider(),
-        _createListTile(context, 'Courses', Routes.Courses, Icons.apps),
+        _createListTile(context, 'Course Registration', Routes.Courses, Icons.dashboard),
         _createListTile(context, 'Schedule', Routes.Schedule, Icons.alarm),
         _createListTile(context, 'About', Routes.About, Icons.info),
         new Divider(),

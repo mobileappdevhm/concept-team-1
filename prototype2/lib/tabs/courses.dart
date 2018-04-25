@@ -19,14 +19,15 @@ class CoursesState extends State<Courses> {
   @override
   void initState() {
     super.initState();
-    MyFileStore.readLocalFile().then((String value) {
-      setState(() {
-        _classes = value.isNotEmpty ? value : "";
-      });
-    });
     MyFileStore.readLoginFile().then((bool value) {
       setState(() {
         _loggedIn = value;
+      });
+    });
+
+    MyFileStore.readLocalFile().then((String value) {
+      setState(() {
+        _classes = value != null ? value : "";
       });
     });
   }
@@ -60,27 +61,29 @@ class CoursesState extends State<Courses> {
   List<Widget> renderCourses() {
     List jsonCourses = JSON.decode(Course.configJson);
     List<Widget> list = new List<Widget>();
-    for (int i = 0; i < jsonCourses.length; i++) {
-      String jsonCourse = JSON.encode(jsonCourses[i]);
-      Map jsonMap = JSON.decode(jsonCourse);
-      list.add(new ExpansionTile(
-        title: new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
-        children: <Widget>[
-          new Container(
-            margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            child: new Text(jsonMap["course_description"],
-                style: MyStyle.getStyle()),
-          ),
-          new Container(
-            margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-            child: new Row(
-                //mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  _buildButton(jsonMap),
-                ]),
-          ),
-        ],
-      ));
+    for (int k=0; k<20; k++) {
+      for (int i = 0; i < jsonCourses.length; i++) {
+        String jsonCourse = JSON.encode(jsonCourses[i]);
+        Map jsonMap = JSON.decode(jsonCourse);
+        list.add(new ExpansionTile(
+          title: new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
+          children: <Widget>[
+            new Container(
+              margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+              child: new Text(jsonMap["course_description"],
+                  style: MyStyle.getStyle()),
+            ),
+            new Container(
+              margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
+              child: new Row(
+                  //mainAxisAlignment: MainAxisAlignment.start,
+                  children: <Widget>[
+                    _buildButton(jsonMap),
+                  ]),
+            ),
+          ],
+        ));
+      }
     }
 
     return list;

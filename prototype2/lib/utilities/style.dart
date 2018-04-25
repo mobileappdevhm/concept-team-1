@@ -15,13 +15,13 @@ class MyStyle {
   static TextStyle getBoldStyle() {
     return new TextStyle(
       fontSize: 16.0,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w500,
     );
   }
   static TextStyle getHeaderStyle() {
     return new TextStyle(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w600,
+      fontSize: 20.0,
+      fontWeight: FontWeight.w700,
     );
   }
 }

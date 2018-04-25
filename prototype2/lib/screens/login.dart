@@ -90,68 +90,66 @@ class LoginState extends State<Login> {
       appBar: new AppBar(
         title: const Text('Login'),
       ),
-      body: new SafeArea(
-        top: false,
-        bottom: false,
-        child: new Form(
-          key: _formKey,
-          autovalidate: _autoValidate,
-          child: new ListView(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 16.0, vertical: 25.0),
-            children: <Widget>[
-              new TextFormField(
-                decoration: const InputDecoration(
-                  icon: const Icon(Icons.email),
-                  hintText: 'Deine E-Mailadresse',
-                  labelText: 'E-mail',
+      body: new Container(
+        child: new SafeArea(
+          top: false,
+          bottom: false,
+          child: new Form(
+            key: _formKey,
+            autovalidate: _autoValidate,
+            child: new ListView(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 25.0),
+              children: <Widget>[
+                new TextFormField(
+                  decoration: const InputDecoration(
+                    icon: const Icon(Icons.email),
+                    hintText: 'Deine E-Mailadresse',
+                    labelText: 'E-mail',
+                  ),
+                  keyboardType: TextInputType.emailAddress,
+                  onSaved: (String value) {
+                    loginData.email = value;
+                  },
+                  //initialValue: Storage.getEmail(),
+                  validator: _validateMail,
                 ),
-                keyboardType: TextInputType.emailAddress,
-                onSaved: (String value) {
-                  loginData.email = value;
-                },
-                //initialValue: Storage.getEmail(),
-                validator: _validateMail,
-              ),
-              new TextFormField(
-                key: _passwordFieldKey,
-                decoration: const InputDecoration(
-                  icon: const Icon(Icons.vpn_key),
-                  hintText: 'Dein Passwort',
-                  labelText: 'Passwort',
+                new TextFormField(
+                  key: _passwordFieldKey,
+                  decoration: const InputDecoration(
+                    icon: const Icon(Icons.vpn_key),
+                    hintText: 'Dein Passwort',
+                    labelText: 'Passwort',
+                  ),
+                  obscureText: true,
+                  onSaved: (String value) {
+                    loginData.password = value;
+                  },
+                  //initialValue: Storage.getPassword(),
+                  validator: _validatePassword,
                 ),
-                obscureText: true,
-                onSaved: (String value) {
-                  loginData.password = value;
-                },
-                //initialValue: Storage.getPassword(),
-                validator: _validatePassword,
-              ),
-              new ListTile(
-                title: new Icon(
-                  loginData.persistence
-                      ? Icons.check_box
-                      : Icons.check_box_outline_blank,
-                  color: loginData.persistence ? Colors.green : null,
+                new ListTile(
+                  leading:
+                  new Icon(
+                    loginData.persistence
+                        ? Icons.check_box
+                        : Icons.check_box_outline_blank,
+                    color: loginData.persistence ? Colors.lightBlueAccent: null,
+                  ),
+                  title: new Text('Remember Me?'),
+                  trailing: new FlatButton(
+                    color: Colors.lightBlueAccent,
+                    onPressed: _handleSubmitted,
+                    child: new Text('Login'),
+                  ),
+                  onTap: () {
+                    setState(() {
+                      loginData.persistence = !loginData.persistence;
+                    });
+                  },
                 ),
-                trailing: new Text(
-                  'Login speichern?',
-                ),
-                onTap: () {
-                  setState(() {
-                    loginData.persistence = !loginData.persistence;
-                  });
-                },
-              ),
-              new Container(
-                padding: const EdgeInsets.all(20.0),
-                alignment: Alignment.center,
-                child: new RaisedButton(
-                  child: const Text('SUBMIT'),
-                  onPressed: _handleSubmitted,
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
