@@ -47,8 +47,29 @@ class Profile extends StatelessWidget {
                         ,)
                     ],
                   ),
-                  ])
+                  new Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
 
+                    children: <Widget>[
+                      new Padding(
+                        padding: new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                        child: new Text('Preferred Language:')
+                        ,),
+                      new DropdownButton<String>(
+                        items: <String>['English','German','French','Chinese','Thai','Spanish']
+                            .map((String value) {
+                          return new DropdownMenuItem<String>(
+                            value: value,
+                            child: new Text(value),
+                          );
+                        }
+                        ).toList(),
+                        onChanged: null,
+                      ),
+                    ],
+
+                  ),
+                  ])
             ],
             //children: <Widget>[
             //  new Column(
