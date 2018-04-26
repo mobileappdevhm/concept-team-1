@@ -1,7 +1,30 @@
 import 'package:cie/utilities/utilities.dart';
 import 'package:flutter/material.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget{
+  @override
+  _ProfileState createState() => new _ProfileState();
+
+}
+
+
+class _ProfileState extends State<Profile> {
+  String _currentLanguage = '';
+  List<String> _languageList = new List<String>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _languageList.addAll(['English','German','French','Chinese','Thai','Spanish']);
+    _currentLanguage = _languageList.elementAt(0);
+  }
+
+  void _onChange(String newLanguage){
+    setState(() {
+      _currentLanguage = newLanguage;
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) =>
@@ -38,14 +61,58 @@ class Profile extends StatelessWidget {
                         ),)
                     ],
                   ),
+
+
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       new Padding(
                         padding: new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-                        child: new Text('Information about the student:')
+                        child: new Text('Department: Computer Sciences and Mathematics ')
                         ,)
                     ],
+                  ),
+
+                  new Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      new Padding(
+                        padding: new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                        child: new Text('Account Type: Exchange Student ')
+                        ,)
+                    ],
+                  ),
+
+                  new Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      new Padding(
+                        padding: new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
+                        child: new Text('Accumulated Credits: 16 ')
+                        ,)
+                    ],
+                  ),
+
+                  new Container(
+                    padding: new EdgeInsets.all(10.0),
+                    child: new Column(
+                      children: <Widget>[
+                        new Text('4 credits left to achieve CIE certificate'),
+                        new LinearProgressIndicator(value:0.7),
+                      ],
+                    ),
+
+                  ),
+
+                  new Container(
+                    padding: new EdgeInsets.all(10.0),
+                    child: new Column(
+                      children: <Widget>[
+                        new Text('7 credits left to achieve CIE certificate'),
+                        new LinearProgressIndicator(value:0.5),
+                      ],
+                    ),
+
                   ),
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.start,
@@ -56,15 +123,15 @@ class Profile extends StatelessWidget {
                         child: new Text('Preferred Language:')
                         ,),
                       new DropdownButton<String>(
-                        items: <String>['English','German','French','Chinese','Thai','Spanish']
-                            .map((String value) {
+                        value: _currentLanguage,
+                        items: _languageList.map((String value) {
                           return new DropdownMenuItem<String>(
                             value: value,
                             child: new Text(value),
                           );
                         }
                         ).toList(),
-                        onChanged: null,
+                        onChanged: (String value) { _onChange(value);},
                       ),
                     ],
 
