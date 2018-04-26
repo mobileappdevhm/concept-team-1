@@ -49,7 +49,7 @@ class TabsState extends State<Tabs> {
         controller: _tabController,
         onPageChanged: onTabChanged,
         children: <Widget>[
-          new _tab1.Courses(),
+          //new _tab1.Courses("dog", "cat", true),
           new _tab2.Departments(),
           new _tab3.Bookmarks(),
         ],
@@ -100,9 +100,6 @@ class TabsState extends State<Tabs> {
       case 2:
         this._appTitle = TabItems[2].title;
         break;
-      case 3:
-        this._appTitle = TabItems[3].title;
-        break;
     }
   }
 }
@@ -115,7 +112,7 @@ class TabItem {
 }
 
 const List<TabItem> TabItems = const <TabItem>[
-  const TabItem(title: 'Search', icon: Icons.search),
+  //const TabItem(title: 'Search', icon: Icons.search),
   const TabItem(title: 'Browse Courses', icon: Icons.business),
-  const TabItem(title: 'Bookmarks', icon: Icons.book),
+  const TabItem(title: 'Saved Courses', icon: Icons.book),
 ];

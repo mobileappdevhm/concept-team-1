@@ -30,7 +30,6 @@ class Profile extends StatelessWidget {
                     children: <Widget>[
                       new Padding(padding: new EdgeInsets.all(30.0),
                         child: new Container(
-
                           child: new Text(
                             'John Doe',
                             style: new TextStyle(fontWeight: FontWeight.bold,
@@ -47,8 +46,6 @@ class Profile extends StatelessWidget {
                         child: new Text('Information about the student:')
                         ,)
                     ],
-                  ),
-                  new Row(
                   ),
                   ])
 
