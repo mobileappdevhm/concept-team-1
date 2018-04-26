@@ -14,7 +14,6 @@ class _ProfileState extends State<Profile> {
 
   @override
   void initState() {
-    // TODO: implement initState
     _languageList.addAll(['English','German','French','Chinese','Thai','Spanish']);
     _currentLanguage = _languageList.elementAt(0);
   }
@@ -77,8 +76,8 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       new Padding(
-                        padding: new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-                        child: new Text('Account Type: Exchange Student ')
+                        padding: new EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+                        child: new Text('Account Type: Local Student ')
                         ,)
                     ],
                   ),
@@ -87,8 +86,8 @@ class _ProfileState extends State<Profile> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
                       new Padding(
-                        padding: new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-                        child: new Text('Accumulated Credits: 16 ')
+                        padding: new EdgeInsets.fromLTRB(10.0, 10.0, 0.0, 0.0),
+                        child: new Text('Accumulated Credits: 10 ')
                         ,)
                     ],
                   ),
@@ -97,31 +96,19 @@ class _ProfileState extends State<Profile> {
                     padding: new EdgeInsets.all(10.0),
                     child: new Column(
                       children: <Widget>[
-                        new Text('4 credits left to achieve CIE certificate'),
+                        new Text('5 credits left to achieve CIE certificate'),
                         new LinearProgressIndicator(value:0.7),
                       ],
                     ),
-
                   ),
 
-                  new Container(
-                    padding: new EdgeInsets.all(10.0),
-                    child: new Column(
-                      children: <Widget>[
-                        new Text('7 credits left to achieve CIE certificate'),
-                        new LinearProgressIndicator(value:0.5),
-                      ],
-                    ),
-
-                  ),
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.start,
-
                     children: <Widget>[
                       new Padding(
-                        padding: new EdgeInsets.fromLTRB(10.0, 0.0, 0.0, 0.0),
-                        child: new Text('Preferred Language:')
-                        ,),
+                        padding: new EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                        child: new Text('Preferred Language: '),
+                      ),
                       new DropdownButton<String>(
                         value: _currentLanguage,
                         items: _languageList.map((String value) {
@@ -134,20 +121,9 @@ class _ProfileState extends State<Profile> {
                         onChanged: (String value) { _onChange(value);},
                       ),
                     ],
-
                   ),
                   ])
             ],
-            //children: <Widget>[
-            //  new Column(
-            //    mainAxisAlignment: MainAxisAlignment.center,
-            //    children: <Widget>[
-            //      new Text('Information about the student'),
-            //      new Text('Accounttype: Local / Exchange'),
-            //      new Text('Local students can see a progressbar which shows how many courses they need to get the certificate.'),
-            //    ],
-            //  )
-            //],
           ),
           drawer: Utilities.getNavigationDrawer(context)
       );

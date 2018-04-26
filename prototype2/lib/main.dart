@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import './screens/about.dart' as _aboutPage;
 import './tabs/tabs.dart' as _tabsPage;
@@ -7,8 +8,20 @@ import './screens/profile.dart' as _profilePage;
 import './screens/schedule.dart' as _schedulePage;
 import './screens/login.dart' as _loginPage;
 import './utilities/constants.dart';
+import './store/Localization.dart';
 
 void main() => runApp(new MaterialApp(
+        onGenerateTitle: (BuildContext context) => DemoLocalizations.of(context).title,
+        localizationsDelegates: [
+          const DemoLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en', ''),
+          const Locale('es', ''),
+          const Locale('de', ''),
+        ],
         title: 'Technical CIE',
         theme: new ThemeData(
             primarySwatch: Colors.blueGrey,
