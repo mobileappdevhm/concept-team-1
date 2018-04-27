@@ -169,6 +169,12 @@ class CourseState extends State<Courses> {
   @override
   void initState() {
     super.initState();
+    MyFileStore.readLoginFile().then((bool value) {
+      setState(() {
+        _loggedIn = value;
+      });
+    });
+
     MyFileStore.readLocalFile().then((String value) {
       setState(() {
         _classes = value != null ? value : "";
