@@ -2,6 +2,7 @@ import 'package:cie/store/MyFileStore.dart';
 import 'package:flutter/material.dart';
 import 'package:cie/utilities/style.dart';
 import 'package:cie/utilities/constants.dart';
+import 'package:cie/tabs/departments.dart';
 
 class Bookmarks extends StatefulWidget {
   @override
@@ -37,8 +38,30 @@ class BookmarksState extends State<Bookmarks> {
       return new Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          new Text('Bookmark content'),
-          new Text(_classes),
+          new Text('No scheduling conflicts found\n', style: MyStyle.getBoldStyle(),),
+          new Container(
+            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+            decoration: new BoxDecoration(
+            border: new Border(
+                top: new BorderSide(color: Colors.grey, width: 2.0),
+                right: new BorderSide(color: Colors.grey, width: 2.0),
+                bottom: new BorderSide(color: Colors.grey, width: 2.0),
+                left: new BorderSide(color: Colors.grey, width: 2.0)),
+            ),
+            child: new Text(_classes, style: MyStyle.getBoldStyle()),
+      ),
+
+      new Container(
+        height: 50.0,
+        margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 25.0),
+        padding: const EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+        child: new RaisedButton(
+        color: Colors.orangeAccent,
+        onPressed: voidFunction,
+        child:new Text("Register Shopping Cart Contents"),
+      )
+    )
         ],
       );
     } else {
@@ -55,6 +78,8 @@ class BookmarksState extends State<Bookmarks> {
     }
     return new Row();
   }
+
+  void voidFunction() { }
 
   void switchToLogin() {
     String path = Routes.Login;

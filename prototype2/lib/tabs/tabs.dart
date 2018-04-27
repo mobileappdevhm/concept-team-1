@@ -114,5 +114,5 @@ class TabItem {
 const List<TabItem> TabItems = const <TabItem>[
   //const TabItem(title: 'Search', icon: Icons.search),
   const TabItem(title: 'Browse Courses', icon: Icons.business),
-  const TabItem(title: 'Saved Courses', icon: Icons.book),
+  const TabItem(title: 'Shopping Cart', icon: Icons.shopping_cart),
 ];

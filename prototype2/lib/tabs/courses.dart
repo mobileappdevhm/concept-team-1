@@ -153,6 +153,7 @@ class CourseState extends State<Courses> {
   bool _isChecked = false;
   bool _loggedIn = false;
   bool isSearch = false;
+  String searchText;
 
   CourseState(String name, String number, bool isSearch) {
     this.name = name;
@@ -266,14 +267,27 @@ class CourseState extends State<Courses> {
           children: <Widget>[
             new Container(
               margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-              child: new Text(jsonMap["course_description"],
+            child: new Text(jsonMap["course_description"] + "\n\n" +
+            "Timetable: " + jsonMap["schedule_time"] + ", " +
+            jsonMap["schedule_days"] + "\n" +
+            "Location: Building " + jsonMap["building_name"] + ", " +
+            jsonMap["classroom_name"] + "\n" +
+            "Professor " + jsonMap["professor_name"] + "\n" +
+            "    " + jsonMap["lecture_contact"] + "\n" +
+            "    " + jsonMap["lecture_phone"] , style: MyStyle.getStyle())
+          /*
+              child: new Text(jsonMap["course_description"] + "\n\n" + jsonMap["schedule_days"] + " " + jsonMap["schedule_time"] + "\n\n" + jsonMap["lecture_contact"]
+                  +"\n" + jsonMap["lecture_phone"],
                   style: MyStyle.getStyle()),
+                  */
             ),
+            _buildButton(jsonMap),
           ],
         ),
       )
       );
     }
+    /*
     list.add(
         new Container(
             height: 50.0,
@@ -286,12 +300,11 @@ class CourseState extends State<Courses> {
             )
         )
     );
+    */
     return list;
   }
 
-  void voidFunction() {
-
-  }
+  void voidFunction() { }
   /* OLD FUNCTIONS HERE */
   List<Widget> renderCoursesOld() {
     List jsonCourses = JSON.decode(Course.configJson);
