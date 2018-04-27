@@ -102,6 +102,16 @@ class _ProfileState extends State<Profile> {
                     ),
                   ),
 
+                  new Container(
+                    padding: new EdgeInsets.all(10.0),
+                    child: new Column(
+                      children: <Widget>[
+                        new Text('7 credits left to achieve IE certificate'),
+                        new LinearProgressIndicator(value:0.5),
+                      ],
+                    ),
+                  ),
+
                   new Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
@@ -122,6 +132,28 @@ class _ProfileState extends State<Profile> {
                       ),
                     ],
                   ),
+                    
+                    new Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        new Padding(
+                          padding: new EdgeInsets.fromLTRB(10.0, 0.0, 10.0, 0.0),
+                          child:new RaisedButton(
+                              onPressed: null,
+                              color: Colors.red ,
+                              disabledColor: Colors.red,
+                              child: new Text(
+                                  "See courses enrolled in previous semester",
+                                  style: new TextStyle(
+                                    color: Colors.black,
+                                  )
+                              ),
+                          
+                          ),
+                        ),
+                        
+                      ],
+                    )
                   ])
             ],
           ),
