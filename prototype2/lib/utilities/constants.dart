@@ -8,4 +8,5 @@ class Routes {
   static const String Profile = '/profile';
   static const String Schedule = '/schedule';
   static const String Login = '/login';
+  static const String Previous = '/previous';
 }

@@ -7,6 +7,7 @@ import './tabs/tabs.dart' as _tabsPage;
 import './screens/profile.dart' as _profilePage;
 import './screens/schedule.dart' as _schedulePage;
 import './screens/login.dart' as _loginPage;
+import './screens/previous.dart' as _previousPage;
 import './utilities/constants.dart';
 import './store/Localization.dart';
 
@@ -37,4 +38,5 @@ void main() => runApp(new MaterialApp(
           Routes.Profile: (BuildContext context) => new _profilePage.Profile(),
           Routes.Schedule: (BuildContext context) => new _schedulePage.Schedule(),
           Routes.Login: (BuildContext context) => new _loginPage.Login(),
+          Routes.Previous: (BuildContext context) => new _previousPage.Previous(),
         }));

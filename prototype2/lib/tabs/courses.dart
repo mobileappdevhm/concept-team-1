@@ -1,11 +1,10 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:flutter/material.dart';
-
 import 'package:cie/store/MyFileStore.dart';
 import 'package:cie/store/course.dart';
 import 'package:cie/utilities/style.dart';
+import 'package:flutter/material.dart';
 
 class Courses extends StatefulWidget {
   String name, number;
@@ -18,7 +17,7 @@ class Courses extends StatefulWidget {
   }
 
   @override
-  CourseState createState() => new CourseState(name,number, isSearch);
+  CourseState createState() => new CourseState(name, number, isSearch);
 }
 /*
 class Courses extends StatefulWidget {
@@ -162,7 +161,7 @@ class CourseState extends State<Courses> {
   }
 
   void onChanged(bool value) {
-    setState((){
+    setState(() {
       _isChecked = value;
     });
   }
@@ -196,29 +195,27 @@ class CourseState extends State<Courses> {
   Widget build(BuildContext context) {
     if (isSearch) {
       return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("Browsing All Courses"),
-      ),
-      body: new Column(
-        children: <Widget>[
-          new Container(
-            //margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            //color: Colors.orangeAccent,
-            color: new Color(0x07000000),
-            child: new TextField(
-              decoration: new InputDecoration(
-                  hintText: "Search for Courses"
+        appBar: new AppBar(
+          title: new Text("Browsing All Courses"),
+        ),
+        body: new Column(
+          children: <Widget>[
+            new Container(
+              //margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+              //color: Colors.orangeAccent,
+              color: new Color(0x07000000),
+              child: new TextField(
+                decoration: new InputDecoration(hintText: "Search for Courses"),
               ),
             ),
-          ),
-          new Expanded(
-            child: new Container(
-              child: new ListView(children: renderCoursesOld()),
+            new Expanded(
+              child: new Container(
+                child: new ListView(children: renderCoursesOld()),
+              ),
             ),
-          ),
-        ],
-      ),
+          ],
+        ),
       );
     }
 
@@ -228,23 +225,23 @@ class CourseState extends State<Courses> {
       ),
       body: new Column(
         children: <Widget>[
-            new Container (
-              padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
-              child: new Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  new Expanded(
-                      child: new Text(name, style:MyStyle.getHeaderStyle(),textAlign: TextAlign.center)
-                  ),
-                ],
-              ),
+          new Container(
+            padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 15.0),
+            child: new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                new Expanded(
+                    child: new Text(name,
+                        style: MyStyle.getHeaderStyle(),
+                        textAlign: TextAlign.center)),
+              ],
             ),
-          new Expanded(
-            flex: 6,
-            child: new Container(
-              child: new ListView(children: renderCourses()),
-            )
           ),
+          new Expanded(
+              flex: 6,
+              child: new Container(
+                child: new ListView(children: renderCourses()),
+              )),
         ],
       ),
     );
@@ -261,31 +258,45 @@ class CourseState extends State<Courses> {
           border: new Border(
               top: new BorderSide(color: Colors.black38, width: 1.0)),
         ),
-        child:new ExpansionTile(
+        child: new ExpansionTile(
           backgroundColor: new Color(0x07000000),
-          title: new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
+          title:
+              new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
           children: <Widget>[
             new Container(
-              margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-            child: new Text(jsonMap["course_description"] + "\n\n" +
-            "Timetable: " + jsonMap["schedule_time"] + ", " +
-            jsonMap["schedule_days"] + "\n" +
-            "Location: Building " + jsonMap["building_name"] + ", " +
-            jsonMap["classroom_name"] + "\n" +
-            "Professor " + jsonMap["professor_name"] + "\n" +
-            "    " + jsonMap["lecture_contact"] + "\n" +
-            "    " + jsonMap["lecture_phone"] , style: MyStyle.getStyle())
-          /*
+                margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                child: new Text(
+                    jsonMap["course_description"] +
+                        "\n\n" +
+                        "Timetable: " +
+                        jsonMap["schedule_time"] +
+                        ", " +
+                        jsonMap["schedule_days"] +
+                        "\n" +
+                        "Location: Building " +
+                        jsonMap["building_name"] +
+                        ", " +
+                        jsonMap["classroom_name"] +
+                        "\n" +
+                        "Professor " +
+                        jsonMap["professor_name"] +
+                        "\n" +
+                        "    " +
+                        jsonMap["lecture_contact"] +
+                        "\n" +
+                        "    " +
+                        jsonMap["lecture_phone"],
+                    style: MyStyle.getStyle())
+                /*
               child: new Text(jsonMap["course_description"] + "\n\n" + jsonMap["schedule_days"] + " " + jsonMap["schedule_time"] + "\n\n" + jsonMap["lecture_contact"]
                   +"\n" + jsonMap["lecture_phone"],
                   style: MyStyle.getStyle()),
                   */
-            ),
+                ),
             _buildButton(jsonMap),
           ],
         ),
-      )
-      );
+      ));
     }
     /*
     list.add(
@@ -304,60 +315,63 @@ class CourseState extends State<Courses> {
     return list;
   }
 
-  void voidFunction() { }
+  void voidFunction() {}
+
   /* OLD FUNCTIONS HERE */
   List<Widget> renderCoursesOld() {
     List jsonCourses = JSON.decode(Course.configJson);
     List<Widget> list = new List<Widget>();
-    for (int k=0; k<20; k++) {
+    for (int k = 0; k < 20; k++) {
       for (int i = 0; i < jsonCourses.length; i++) {
         String jsonCourse = JSON.encode(jsonCourses[i]);
         Map jsonMap = JSON.decode(jsonCourse);
         list.add(new Container(
-          decoration: new BoxDecoration(
-            color: new Color(0x07000000),
-            border: new Border(
-                top: new BorderSide(color: Colors.black38, width: 1.0)),
-          ),
-          child: new ExpansionTile(
-            title: new Text(jsonMap["course_name"], style: MyStyle.getBoldStyle()),
-            children: <Widget>[
-              new Container(
-                margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
-                child: new Text(jsonMap["course_description"],
-                    style: MyStyle.getStyle()),
-              ),
-              new Container(
-                margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
-                child: new Row(
-                    //mainAxisAlignment: MainAxisAlignment.start,
-                    children: <Widget>[
-                      _buildButton(jsonMap),
-                    ]),
-              ),
-            ],
-          )
-        ));
+            decoration: new BoxDecoration(
+              color: new Color(0x07000000),
+              border: new Border(
+                  top: new BorderSide(color: Colors.black38, width: 1.0)),
+            ),
+            child: new ExpansionTile(
+              title: new Text(jsonMap["course_name"],
+                  style: MyStyle.getBoldStyle()),
+              children: <Widget>[
+                new Container(
+                  margin: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 10.0),
+                  child: new Text(jsonMap["course_description"],
+                      style: MyStyle.getStyle()),
+                ),
+                new Container(
+                  margin: const EdgeInsets.fromLTRB(15.0, 15.0, 15.0, 15.0),
+                  child: new Row(
+                      //mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        _buildButton(jsonMap),
+                      ]),
+                ),
+              ],
+            )));
       }
     }
     return list;
   }
 
   Widget _buildButton(Map jsonMap) {
-    return new RaisedButton(
-      color: Colors.orangeAccent,
-      onPressed:
-          _loggedIn ? () => _addClassHandler(jsonMap["course_name"]) : null,
-      child: new Container(
-        margin: const EdgeInsets.fromLTRB(50.0, 15.0, 50.0, 15.0),
-        child: new Row(
-          children: <Widget>[
-            new Icon(Icons.bookmark),
-            new Text("Bookmark Course"),
-          ],
+    return new Container(
+      padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 10.0),
+      child: new RaisedButton(
+        color: Colors.orangeAccent,
+        onPressed:
+            _loggedIn ? () => _addClassHandler(jsonMap["course_name"]) : null,
+        child: new Container(
+          margin: const EdgeInsets.fromLTRB(50.0, 15.0, 50.0, 15.0),
+          child: new Row(
+            children: <Widget>[
+              new Icon(Icons.bookmark),
+              new Text("Bookmark Course"),
+            ],
+          ),
         ),
       ),
     );
   }
-
 }
